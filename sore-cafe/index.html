@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SORE — Kopi &amp; Dapur, Bandung</title>
+  <meta name="description" content="Kopi, makanan rumahan, dan meja kayu di Bandung. Pesan langsung dari meja lewat QR, bayar dengan QRIS.">
+  <meta name="theme-color" content="#f3ede3">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke isi</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="SORE, Kopi dan Dapur">
+        <span class="brand-word">SORE<span class="brand-dot"></span></span>
+        <span class="brand-sub">Kopi<br>&amp; Dapur</span>
+      </a>
+      <nav class="main-nav" id="siteNav" aria-label="Navigasi utama">
+        <a href="menu.html">Menu</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="ruang.html">Ruang</a>
+        <a href="status.html">Pesanan</a>
+        <a href="qr.html">QR Meja</a>
+      </nav>
+      <div class="header-actions">
+        <span class="table-chip" data-meja-chip hidden>Meja <b data-meja-num>—</b></span>
+        <a class="cart-link" href="checkout.html" aria-label="Keranjang">
+          <span data-cart-label>Keranjang</span>
+          <span class="cart-count" data-cart-count>0</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Buka navigasi"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Bandung · sejak 2019</p>
+          <h1 class="hero-title">Kopi pagi,<br>meja <span class="accent">sore.</span></h1>
+          <p class="hero-lede">Tempat untuk berhenti sebentar: espresso yang jujur, makanan yang dimasak setelah kamu pesan, dan kursi yang tidak buru-buru meminta kamu pergi.</p>
+          <div class="hero-actions">
+            <a class="btn btn--solid" href="menu.html">Lihat menu</a>
+            <a class="btn btn--ghost" href="tentang.html">Cerita kami</a>
+          </div>
+          <a class="table-note" data-hero-table href="menu.html">
+            <span class="tn-copy">
+              <span class="tn-label">Pesan dari meja</span>
+              <span class="tn-value"><span data-tn-value>Pilih meja</span><small data-tn-small>Scan QR di meja atau masukkan nomornya</small></span>
+            </span>
+            <span class="tn-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <figure class="hero-figure">
+          <img src="assets/img/hero.jpg" alt="Chemex dan cangkir kopi di meja bar SORE" width="1800" height="1200" fetchpriority="high" decoding="async">
+          <figcaption class="hero-caption">
+            <span class="mono-label">Bar · 15.10</span>
+            <p>Chemex Gayo, 15 gram, 240 ml. Diseduh setelah pesanan masuk.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="container info-strip">
+        <div class="info-grid">
+          <div class="info-item"><span class="mono-label">Buka</span><span>Setiap hari, 07.00–22.00</span></div>
+          <div class="info-item"><span class="mono-label">Dapur</span><span>Tutup 21.00</span></div>
+          <div class="info-item"><span class="mono-label">Alamat</span><span>Bumi Sari 14, Bandung</span></div>
+          <div class="info-item"><span class="mono-label">WiFi</span><span>sore.tamu</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="signature-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Dari dapur</p>
+            <h2 class="section-title" id="signature-title">Tiga yang sering dipesan.</h2>
+          </div>
+          <a class="link-more" href="menu.html">Semua menu <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="items-grid">
+          <article class="item-card">
+            <div class="item-media">
+              <img src="assets/img/es-kopi-susu.jpg" alt="Es Kopi Susu Sore dalam gelas kaca" width="800" height="1000" loading="lazy" decoding="async">
+              <span class="item-tag">Paling dicari</span>
+            </div>
+            <div class="item-body">
+              <div class="item-top">
+                <h3 class="item-name">Es Kopi Susu Sore</h3>
+                <span class="item-price">Rp28.000</span>
+              </div>
+              <p class="item-desc">Espresso, susu segar, gula aren. Gelas 300 ml, disajikan dingin.</p>
+              <div class="item-bottom">
+                <span class="item-cat">Kopi</span>
+                <button class="add-btn" type="button" data-add="es-kopi-susu" aria-label="Tambah Es Kopi Susu Sore ke keranjang">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <div class="item-media">
+              <img src="assets/img/nasi-goreng.jpg" alt="Nasi goreng kampung dengan telur mata sapi" width="800" height="1000" loading="lazy" decoding="async">
+            </div>
+            <div class="item-body">
+              <div class="item-top">
+                <h3 class="item-name">Nasi Goreng Kampung</h3>
+                <span class="item-price">Rp45.000</span>
+              </div>
+              <p class="item-desc">Telur mata sapi, kerupuk, acar, sambal terasi.</p>
+              <div class="item-bottom">
+                <span class="item-cat">Makanan</span>
+                <button class="add-btn" type="button" data-add="nasi-goreng" aria-label="Tambah Nasi Goreng Kampung ke keranjang">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <div class="item-media">
+              <img src="assets/img/cinnamon-roll.jpg" alt="Cinnamon roll dengan lapisan cream cheese" width="800" height="1000" loading="lazy" decoding="async">
+              <span class="item-tag">Baru</span>
+            </div>
+            <div class="item-body">
+              <div class="item-top">
+                <h3 class="item-name">Cinnamon Roll</h3>
+                <span class="item-price">Rp30.000</span>
+              </div>
+              <p class="item-desc">Roti gulung kayu manis, cream cheese glaze.</p>
+              <div class="item-bottom">
+                <span class="item-cat">Camilan</span>
+                <button class="add-btn" type="button" data-add="cinnamon-roll" aria-label="Tambah Cinnamon Roll ke keranjang">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section--tight" aria-labelledby="steps-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Cara pesan</p>
+            <h2 class="section-title" id="steps-title">Tiga langkah, tanpa aplikasi.</h2>
+          </div>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">01</span>
+            <h3>Pindai QR di meja.</h3>
+            <p>Menu terbuka dengan nomor meja sudah terisi. Kalau QR tidak terbaca, ketik nomornya di halaman pembayaran.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">02</span>
+            <h3>Pilih, lalu isi nama.</h3>
+            <p>Masukkan pesanan ke keranjang. Di halaman pembayaran, tulis nama dan pastikan nomor meja benar.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">03</span>
+            <h3>Bayar dan tunggu.</h3>
+            <p>QRIS dibuat sesuai total pesanan. Setelah dibayar, dapur menyiapkan dan pesanan diantar ke meja.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="room-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Ruang</p>
+            <h2 class="section-title" id="room-title">Terang di pagi, tenang di sore.</h2>
+          </div>
+          <a class="link-more" href="ruang.html">Lihat ruang <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="room-grid">
+          <figure class="room-fig room-fig--tall">
+            <img src="assets/img/interior-1.jpg" alt="Meja panjang dan kursi kayu di ruang utama SORE" width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption><span>Ruang utama</span><span>meja panjang</span></figcaption>
+          </figure>
+          <figure class="room-fig room-fig--square">
+            <img src="assets/img/interior-2.jpg" alt="Meja kayu di ruang kaca SORE, dikelilingi tanaman" width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption><span>Ruang kaca</span><span>paling tenang</span></figcaption>
+          </figure>
+          <figure class="room-fig room-fig--wide">
+            <img src="assets/img/interior-3.jpg" alt="Bar kopi SORE dengan mesin espresso dan lampu gantung" width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption><span>Bar</span><span>tempat bertanya soal kopi</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" aria-labelledby="visit-title">
+      <div class="container visit-grid">
+        <div>
+          <p class="eyebrow">Datang</p>
+          <h2 id="visit-title">Jl. Bumi Sari No. 14.</h2>
+          <p class="visit-address">
+            <strong>Bandung 40123.</strong><br>
+            Di seberang toko bunga, sebelah warung nasi Ibu Tati. Parkir motor di depan, mobil di sepanjang jalan.
+          </p>
+          <ul class="hours">
+            <li><span>Setiap hari</span><span>07.00 – 22.00</span></li>
+            <li><span>Dapur</span><span>sampai 21.00</span></li>
+            <li><span>Bar</span><span>sampai 21.30</span></li>
+          </ul>
+        </div>
+        <div class="map-wrap">
+          <svg viewBox="0 0 600 440" role="img" aria-label="Peta sederhana lokasi SORE di Jalan Bumi Sari, Bandung">
+            <rect width="600" height="440" fill="#e9ddca"/>
+            <g fill="#dccbb4">
+              <rect x="24" y="24" width="120" height="86"/>
+              <rect x="250" y="18" width="140" height="74"/>
+              <rect x="470" y="30" width="102" height="66"/>
+              <rect x="30" y="340" width="116" height="72"/>
+              <rect x="250" y="352" width="120" height="64"/>
+              <rect x="460" y="330" width="112" height="82"/>
+            </g>
+            <g stroke="#c3b09a" stroke-width="17" fill="none">
+              <path d="M-20 128 L620 96"/>
+              <path d="M-20 300 L620 330"/>
+              <path d="M190 -20 L222 460"/>
+              <path d="M432 -20 L404 460"/>
+            </g>
+            <g stroke="#f8f1e6" stroke-width="2.4" stroke-dasharray="8 10" fill="none">
+              <path d="M-20 128 L620 96"/>
+              <path d="M-20 300 L620 330"/>
+              <path d="M190 -20 L222 460"/>
+              <path d="M432 -20 L404 460"/>
+            </g>
+            <path d="M0 214 C120 206 210 224 318 210 S510 196 600 204" stroke="#a68f78" stroke-width="3" fill="none"/>
+            <circle cx="386" cy="219" r="34" fill="none" stroke="#a64b2a" stroke-width="1" opacity=".55"/>
+            <circle cx="386" cy="219" r="5.5" fill="#a64b2a"/>
+            <rect x="330" y="236" width="112" height="25" fill="#1c1813"/>
+            <text x="386" y="253" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" letter-spacing="3" fill="#f3ede3">SORE</text>
+            <text x="44" y="108" font-family="Arial, sans-serif" font-size="9" letter-spacing="2.4" fill="#695e51">DAGO</text>
+            <text x="244" y="188" font-family="Arial, sans-serif" font-size="9" letter-spacing="2.4" fill="#695e51">BUMI SARI</text>
+            <text x="468" y="358" font-family="Arial, sans-serif" font-size="9" letter-spacing="2.4" fill="#695e51">RIAU</text>
+            <g transform="translate(546 72)">
+              <circle r="17" fill="none" stroke="#a68f78"/>
+              <path d="M0 -11 L4 4 L0 1 L-4 4 Z" fill="#1c1813"/>
+              <text y="-21" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" letter-spacing="1.6" fill="#695e51">U</text>
+            </g>
+          </svg>
+          <div class="map-note"><span>Bandung</span><span>± 6 menit dari Dago</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-word">SORE<span class="brand-dot"></span></span>
+          <p>Kopi, makanan rumahan, dan meja kayu yang keras kepala. Buka setiap hari di Bandung.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Datang</h3>
+          <ul>
+            <li><span>Jl. Bumi Sari No. 14</span></li>
+            <li><span>Bandung 40123</span></li>
+            <li><a href="tel:+622200001414">0812-2000-1414</a></li>
+            <li><a href="mailto:halo@sore.cafe">halo@sore.cafe</a></li>
+            <li><a href="https://instagram.com/sore.bandung" target="_blank" rel="noopener">@sore.bandung</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Halaman</h3>
+          <ul>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="tentang.html">Tentang SORE</a></li>
+            <li><a href="ruang.html">Ruang</a></li>
+            <li><a href="status.html">Cek pesanan</a></li>
+            <li><a href="qr.html">QR meja (staf)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-word" aria-hidden="true">SORE</div>
+      <div class="footer-bottom">
+        <span>© 2026 SORE Kopi &amp; Dapur</span>
+        <span>Dibuat di Bandung. Foto: Unsplash.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

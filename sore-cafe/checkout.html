@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Konfirmasi pesanan — SORE Kopi &amp; Dapur</title>
+  <meta name="description" content="Isi nama dan nomor meja, lalu bayar pesanan SORE dengan QRIS.">
+  <meta name="theme-color" content="#f3ede3">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/vendor/qrcode.js" defer></script>
+  <script src="assets/js/qris.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/checkout.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke isi</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="SORE, Kopi dan Dapur">
+        <span class="brand-word">SORE<span class="brand-dot"></span></span>
+        <span class="brand-sub">Kopi<br>&amp; Dapur</span>
+      </a>
+      <nav class="main-nav" id="siteNav" aria-label="Navigasi utama">
+        <a href="menu.html">Menu</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="ruang.html">Ruang</a>
+        <a href="status.html">Pesanan</a>
+        <a href="qr.html">QR Meja</a>
+      </nav>
+      <div class="header-actions">
+        <span class="table-chip" data-meja-chip hidden>Meja <b data-meja-num>—</b></span>
+        <a class="cart-link" href="checkout.html" aria-label="Keranjang">
+          <span data-cart-label>Keranjang</span>
+          <span class="cart-count" data-cart-count>0</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Buka navigasi"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <div class="page-head-row">
+          <div>
+            <p class="eyebrow">Langkah terakhir</p>
+            <h1 class="page-title">Konfirmasi.</h1>
+          </div>
+          <div class="page-side">
+            <span class="table-chip" data-meja-chip hidden>Meja <b data-meja-num>—</b></span>
+            <p class="page-sub">Isi nama dan nomor meja. Pesanan baru diteruskan ke dapur setelah pembayaran selesai.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="checkout-grid" id="checkoutGrid">
+        <form id="checkoutForm" novalidate>
+          <section class="form-section">
+            <div class="form-section-head">
+              <span class="step-no">01</span>
+              <h2>Pesananmu</h2>
+            </div>
+            <div class="order-items" id="orderLines"></div>
+            <p class="form-note">Ubah jumlah atau hapus item di sini. Keranjang tersimpan di perangkat ini.</p>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section-head">
+              <span class="step-no">02</span>
+              <h2>Untuk siapa?</h2>
+            </div>
+            <p class="form-note">Nama dipakai barista saat memanggil pesanan. Nomor meja menentukan tujuan antar.</p>
+
+            <div class="field-grid">
+              <div class="field" id="fieldNama">
+                <label for="nama">Nama <span class="req">*</span></label>
+                <input class="input" id="nama" name="nama" type="text" maxlength="60" autocomplete="name" placeholder="Nama kamu" aria-describedby="errorNama">
+                <span class="field-error" id="errorNama" role="alert"></span>
+              </div>
+              <div class="field" id="fieldMeja">
+                <label for="meja">Nomor meja <span class="req">*</span></label>
+                <input class="input" id="meja" name="meja" type="number" min="1" max="30" inputmode="numeric" placeholder="1–30" autocomplete="off" aria-describedby="hintMeja errorMeja">
+                <span class="hint" id="hintMeja">Terisi otomatis dari QR meja.</span>
+                <span class="field-error" id="errorMeja" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="field" style="margin-top:16px" role="radiogroup" aria-labelledby="tipeLabel">
+              <span class="field-label" id="tipeLabel">Tipe pesanan</span>
+              <div class="radio-row">
+                <label class="radio-card is-checked">
+                  <input type="radio" name="tipe" value="dine-in" checked>
+                  <span>Makan di tempat<small>Diantar ke meja</small></span>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="tipe" value="takeaway">
+                  <span>Dibungkus<small>Diambil di bar</small></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field" style="margin-top:16px">
+              <label for="catatan">Catatan <span style="color:var(--line-dark);font-weight:400">(opsional)</span></label>
+              <textarea class="input" id="catatan" name="catatan" maxlength="200" placeholder="Alergi, tanpa gula, sambal terpisah…"></textarea>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section-head">
+              <span class="step-no">03</span>
+              <h2>Pembayaran</h2>
+            </div>
+            <div class="pay-method">
+              <span class="qris-mark">QRIS</span>
+              <span>
+                <strong>QRIS · semua bank dan e-wallet</strong>
+                <small>Kode dibuat sesuai total, sekali pakai.</small>
+              </span>
+              <span class="pay-check" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.5 8.5l3 3 6-7"/></svg>
+              </span>
+            </div>
+            <p class="secure-note">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="7" width="10" height="7"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg>
+              QR berlaku 15 menit. Kalau kedaluwarsa, buat ulang tanpa kehilangan pesanan.
+            </p>
+          </section>
+        </form>
+
+        <aside class="summary" aria-labelledby="summaryTitle">
+          <h2 id="summaryTitle">Ringkasan</h2>
+          <dl class="summary-where">
+            <dt>Nama</dt>
+            <dd data-sum-name>Belum diisi</dd>
+            <dt>Meja</dt>
+            <dd data-sum-meja>Belum dipilih</dd>
+            <dt>Tipe</dt>
+            <dd data-sum-tipe>Makan di tempat</dd>
+          </dl>
+
+          <div class="sum-row"><span>Subtotal</span><span id="summarySubtotal">Rp0</span></div>
+          <div class="sum-row"><span>Pajak</span><span>Termasuk</span></div>
+          <div class="sum-row"><span>Biaya layanan</span><span>Tidak ada</span></div>
+          <div class="sum-total"><span>Total</span><strong id="summaryTotal">Rp0</strong></div>
+
+          <div class="pay-method">
+            <span class="qris-mark">QRIS</span>
+            <span>
+              <strong>Bayar dengan QRIS</strong>
+              <small>Nominal <span id="summaryTotalInline">Rp0</span></small>
+            </span>
+          </div>
+
+          <button class="btn btn--solid btn--wide" id="payBtn" type="submit" form="checkoutForm">Bayar Rp0</button>
+
+          <p class="secure-note">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="7" width="10" height="7"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg>
+            Dengan melanjutkan, kamu membuat pesanan di meja yang tertera. Pembayaran diproses lewat QRIS.
+          </p>
+        </aside>
+      </div>
+
+      <div class="checkout-empty" id="checkoutEmpty" hidden>
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M14 18h24l-2.4 24H16.4L14 18Z"/><path d="M20 18v-3a6 6 0 0 1 12 0v3"/><path d="M21 27c2.2-1.4 3.2.8 5 0s3-1.6 5 0"/></svg>
+        <h2>Belum ada pesanan.</h2>
+        <p>Pilih kopi atau makanan dulu, lalu kembali ke halaman ini.</p>
+        <a class="btn btn--solid" href="menu.html">Ke menu</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-word">SORE<span class="brand-dot"></span></span>
+          <p>Kopi, makanan rumahan, dan meja kayu yang keras kepala. Buka setiap hari di Bandung.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Datang</h3>
+          <ul>
+            <li><span>Jl. Bumi Sari No. 14</span></li>
+            <li><span>Bandung 40123</span></li>
+            <li><a href="tel:+622200001414">0812-2000-1414</a></li>
+            <li><a href="mailto:halo@sore.cafe">halo@sore.cafe</a></li>
+            <li><a href="https://instagram.com/sore.bandung" target="_blank" rel="noopener">@sore.bandung</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Halaman</h3>
+          <ul>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="tentang.html">Tentang SORE</a></li>
+            <li><a href="ruang.html">Ruang</a></li>
+            <li><a href="status.html">Cek pesanan</a></li>
+            <li><a href="qr.html">QR meja (staf)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-word" aria-hidden="true">SORE</div>
+      <div class="footer-bottom">
+        <span>© 2026 SORE Kopi &amp; Dapur</span>
+        <span>Dibuat di Bandung. Foto: Unsplash.</span>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="pay-dialog" id="payDialog" aria-labelledby="payTitle">
+    <div class="pay-dialog-head">
+      <div class="cart-title" id="payTitle">QRIS<small>Pembayaran pesanan</small></div>
+      <button class="icon-btn" type="button" id="payClose" aria-label="Tutup pembayaran">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 4l10 10M14 4 4 14"/></svg>
+      </button>
+    </div>
+    <div class="pay-body">
+      <p class="pay-merchant">SORE DEMO · Bandung</p>
+      <div class="qr-frame" id="qrFrame" aria-label="Kode QRIS untuk pesanan ini"></div>
+      <p class="pay-amount" id="payAmount">Rp0</p>
+      <p class="pay-for" id="payFor">Meja — · atas nama —</p>
+      <p class="pay-for" id="payOrder">Kode —</p>
+      <p class="countdown" id="payCountdown">15:00 tersisa</p>
+
+      <ol class="pay-instructions">
+        <li>Buka aplikasi bank atau e-wallet yang mendukung QRIS.</li>
+        <li>Pindai kode di atas, lalu periksa nominal dan nama merchant.</li>
+        <li>Setelah berhasil, tekan tombol simulasi di bawah ini.</li>
+      </ol>
+
+      <div class="demo-note">
+        <strong>Mode demo.</strong> QR ini tidak terhubung ke uang sungguhan dan tidak akan memotong saldo. Di toko nyata, kode diterbitkan lewat QRIS resmi.
+      </div>
+
+      <button class="btn btn--solid btn--wide" id="paySimulate" type="button">Simulasi pembayaran berhasil</button>
+      <button class="btn btn--ghost btn--wide" id="payRegenerate" type="button" hidden>Buat QR baru</button>
+      <button class="pay-cancel" id="payCancel" type="button">Batalkan</button>
+    </div>
+  </dialog>
+</body>
+</html>

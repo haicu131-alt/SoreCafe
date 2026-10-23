@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kartu QR meja — SORE Kopi &amp; Dapur</title>
+  <meta name="description" content="Buat dan cetak kartu QR untuk setiap meja SORE. QR membuka menu dengan nomor meja terisi otomatis.">
+  <meta name="theme-color" content="#f3ede3">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/vendor/qrcode.js" defer></script>
+  <script src="assets/js/qris.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/qr.js" defer></script>
+</head>
+<body class="page-qr">
+  <a class="skip-link" href="#main">Langsung ke isi</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="SORE, Kopi dan Dapur">
+        <span class="brand-word">SORE<span class="brand-dot"></span></span>
+        <span class="brand-sub">Kopi<br>&amp; Dapur</span>
+      </a>
+      <nav class="main-nav" id="siteNav" aria-label="Navigasi utama">
+        <a href="menu.html">Menu</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="ruang.html">Ruang</a>
+        <a href="status.html">Pesanan</a>
+        <a href="qr.html" aria-current="page">QR Meja</a>
+      </nav>
+      <div class="header-actions">
+        <span class="table-chip" data-meja-chip hidden>Meja <b data-meja-num>—</b></span>
+        <a class="cart-link" href="checkout.html" aria-label="Keranjang">
+          <span data-cart-label>Keranjang</span>
+          <span class="cart-count" data-cart-count>0</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Buka navigasi"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <div class="page-head-row">
+          <div>
+            <p class="eyebrow">Untuk staf</p>
+            <h1 class="page-title">Kartu QR meja.</h1>
+          </div>
+          <div class="page-side">
+            <p class="page-sub">Buat satu kartu per meja, cetak A6, lalu tempel di tepi meja. QR membuka menu dengan nomor meja sudah terisi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container qr-layout">
+      <form class="qr-form" id="qrForm" novalidate>
+        <h2>Nomor meja</h2>
+        <p>Masukkan angka 1 sampai 30. Kartu di sebelah kanan diperbarui langsung.</p>
+
+        <div class="field">
+          <label for="qrMeja">Meja</label>
+          <input class="input" id="qrMeja" name="qrMeja" type="number" min="1" max="30" inputmode="numeric" value="1" required>
+          <span class="field-error" id="qrError" role="alert"></span>
+        </div>
+
+        <div class="qr-actions">
+          <button class="btn btn--solid" type="submit">Tampilkan</button>
+        </div>
+
+        <div class="qr-actions">
+          <button class="btn btn--ghost" id="downloadQr" type="button">Unduh QR</button>
+          <button class="btn btn--ghost" id="printBtn" type="button">Cetak kartu</button>
+        </div>
+
+        <button class="qr-copy" id="copyLink" type="button">Salin tautan menu</button>
+
+        <p class="qr-hint" style="text-align:left;margin-top:18px">
+          Cetak pada kertas A6 tanpa margin. QR mengikuti alamat halaman ini, jadi buka halaman dari alamat situs yang akan dipakai—bukan dari file di komputer.
+        </p>
+      </form>
+
+      <div>
+        <div class="qr-preview">
+          <div class="table-card" id="printCard">
+            <div class="tc-brand">SORE<em>.</em></div>
+            <div class="tc-sub">Kopi &amp; Dapur</div>
+            <div class="tc-meja">Meja</div>
+            <div class="tc-num" id="cardNumber">01</div>
+            <div class="tc-qr" id="cardQr" aria-label="QR menu meja ini"></div>
+            <p class="tc-note">Pindai untuk membuka menu.<br>Pesanan diantar ke meja ini.</p>
+            <div class="tc-addr">Jl. Bumi Sari No. 14 · Bandung</div>
+          </div>
+          <p class="qr-hint">
+            Tautan QR:<br>
+            <code id="previewUrl">menu.html?meja=1</code>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-word">SORE<span class="brand-dot"></span></span>
+          <p>Kopi, makanan rumahan, dan meja kayu yang keras kepala. Buka setiap hari di Bandung.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Datang</h3>
+          <ul>
+            <li><span>Jl. Bumi Sari No. 14</span></li>
+            <li><span>Bandung 40123</span></li>
+            <li><a href="tel:+622200001414">0812-2000-1414</a></li>
+            <li><a href="mailto:halo@sore.cafe">halo@sore.cafe</a></li>
+            <li><a href="https://instagram.com/sore.bandung" target="_blank" rel="noopener">@sore.bandung</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Halaman</h3>
+          <ul>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="tentang.html">Tentang SORE</a></li>
+            <li><a href="ruang.html">Ruang</a></li>
+            <li><a href="status.html">Cek pesanan</a></li>
+            <li><a href="qr.html">QR meja (staf)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-word" aria-hidden="true">SORE</div>
+      <div class="footer-bottom">
+        <span>© 2026 SORE Kopi &amp; Dapur</span>
+        <span>Dibuat di Bandung. Foto: Unsplash.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

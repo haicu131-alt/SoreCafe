@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Status pesanan — SORE Kopi &amp; Dapur</title>
+  <meta name="description" content="Lihat status pesanan SORE: diterima, disiapkan, atau siap diantar.">
+  <meta name="theme-color" content="#f3ede3">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/status.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke isi</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="SORE, Kopi dan Dapur">
+        <span class="brand-word">SORE<span class="brand-dot"></span></span>
+        <span class="brand-sub">Kopi<br>&amp; Dapur</span>
+      </a>
+      <nav class="main-nav" id="siteNav" aria-label="Navigasi utama">
+        <a href="menu.html">Menu</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="ruang.html">Ruang</a>
+        <a href="status.html" aria-current="page">Pesanan</a>
+        <a href="qr.html">QR Meja</a>
+      </nav>
+      <div class="header-actions">
+        <span class="table-chip" data-meja-chip hidden>Meja <b data-meja-num>—</b></span>
+        <a class="cart-link" href="checkout.html" aria-label="Keranjang">
+          <span data-cart-label>Keranjang</span>
+          <span class="cart-count" data-cart-count>0</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Buka navigasi"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div id="statusContent">
+      <section class="status-hero">
+        <div class="container">
+          <div class="status-hero-top">
+            <div>
+              <p class="eyebrow">Pesanan</p>
+              <h1 id="statusTitle">Pesanan diterima.</h1>
+              <p class="status-hero-meta" id="statusHeroMeta">Meja — · atas nama —</p>
+            </div>
+            <span class="status-pill" id="statusPill">Diterima</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="container status-grid">
+        <div>
+          <ol class="status-timeline" id="timeline" aria-label="Tahapan pesanan"></ol>
+        </div>
+
+        <aside class="status-card" aria-labelledby="detailTitle">
+          <h2 id="detailTitle">Rincian</h2>
+          <div class="status-meta">
+            <div><span class="meta-label">Kode</span><span class="meta-value" id="metaCode">—</span></div>
+            <div><span class="meta-label">Meja</span><span class="meta-value" id="metaMeja">—</span></div>
+            <div><span class="meta-label">Nama</span><span class="meta-value" id="metaNama">—</span></div>
+            <div><span class="meta-label">Tipe</span><span class="meta-value" id="metaTipe">—</span></div>
+            <div><span class="meta-label">Waktu</span><span class="meta-value" id="metaWaktu">—</span></div>
+            <div><span class="meta-label">Pembayaran</span><span class="meta-value">QRIS · lunas</span></div>
+          </div>
+
+          <ul class="status-lines" id="statusItems"></ul>
+
+          <div class="sum-total"><span>Total</span><strong id="statusTotal">Rp0</strong></div>
+
+          <div id="statusCatatanWrap" hidden>
+            <span class="meta-label" style="margin-top:14px">Catatan</span>
+            <p class="status-lines" style="font-size:12px;color:var(--muted);line-height:1.6;margin:0" id="statusCatatan"></p>
+          </div>
+
+          <div class="status-actions">
+            <a class="btn btn--ghost" id="againLink" href="menu.html">Pesan lagi</a>
+            <a class="btn btn--solid" href="https://wa.me/6281220001414" target="_blank" rel="noopener">Tanya bar</a>
+          </div>
+
+          <p class="status-note">
+            Status di halaman ini berjalan otomatis sebagai demo. Di toko nyata, perubahan status dikirim dari sistem dapur. Simpan tautan halaman ini kalau perlu.
+          </p>
+        </aside>
+      </div>
+    </div>
+
+    <div class="checkout-empty" id="statusEmpty" hidden>
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="23" cy="23" r="11"/><path d="M31 31l9 9M18 23h10M23 18v10"/></svg>
+      <h2>Pesanan tidak ditemukan.</h2>
+      <p>Kode pesanan hanya tersimpan di perangkat yang dipakai untuk memesan. Kalau kamu baru memesan, buka tautan status dari halaman pembayaran.</p>
+      <a class="btn btn--solid" href="menu.html" data-menu-link>Ke menu</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-word">SORE<span class="brand-dot"></span></span>
+          <p>Kopi, makanan rumahan, dan meja kayu yang keras kepala. Buka setiap hari di Bandung.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Datang</h3>
+          <ul>
+            <li><span>Jl. Bumi Sari No. 14</span></li>
+            <li><span>Bandung 40123</span></li>
+            <li><a href="tel:+622200001414">0812-2000-1414</a></li>
+            <li><a href="mailto:halo@sore.cafe">halo@sore.cafe</a></li>
+            <li><a href="https://instagram.com/sore.bandung" target="_blank" rel="noopener">@sore.bandung</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Halaman</h3>
+          <ul>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="tentang.html">Tentang SORE</a></li>
+            <li><a href="ruang.html">Ruang</a></li>
+            <li><a href="status.html">Cek pesanan</a></li>
+            <li><a href="qr.html">QR meja (staf)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-word" aria-hidden="true">SORE</div>
+      <div class="footer-bottom">
+        <span>© 2026 SORE Kopi &amp; Dapur</span>
+        <span>Dibuat di Bandung. Foto: Unsplash.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
